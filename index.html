@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Erumbu 💙</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&family=Parisienne&display=swap');
+
+:root {
+    --ink: #101d3b;
+    --deep: #080f20;
+    --navy: #172b50;
+    --blue: #8fc5ff;
+    --silver: #e9eef8;
+    --muted: #bac7df;
+    --border: rgba(169,201,255,.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    min-height: 100vh;
+    background: var(--deep);
+    color: var(--silver);
+    font-family: 'DM Sans', sans-serif;
+}
+
+body.intro-open { overflow: hidden; }
+
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+
+button:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(130deg,#172b50 0%,#101d3b 45%,#080f20 100%);
+}
+
+.page.active {
+    display: flex;
+    animation: pageIn .45s ease;
+}
+
+@keyframes pageIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--blue);
+    margin-bottom: 24px;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(46px,9vw,86px);
+    line-height: 1.12;
+}
+
+h1 span {
+    display: block;
+    color: var(--blue);
+    font-style: italic;
+}
+
+h2 {
+    font-size: clamp(32px,6vw,48px);
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: var(--blue);
+}
+
+p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.birthday-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(20px,4vw,28px);
+    margin: 24px 0 15px;
+    color: white;
+}
+
+.intro {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+button {
+    border: 1px solid #637fae;
+    background: #1a3158;
+    color: white;
+    padding: 13px 23px;
+    border-radius: 7px;
+    transition: .2s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background: #2c4976;
+    transform: translateY(-2px);
+}
+
+.primary {
+    background: #d9e8ff;
+    color: #101d3b;
+    border-color: #d9e8ff;
+    padding: 15px 29px;
+    margin-top: 25px;
+}
+
+.primary:hover { background: white; }
+
+.secondary {
+    background: transparent;
+    border-color: var(--border);
+}
+
+.footer-note {
+    color: #91a6ca;
+    letter-spacing: 2px;
+    font-size: 10px;
+    margin-top: 36px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 15px;
+    margin-top: 32px;
+    text-align: left;
+}
+
+.menu-card {
+    min-height: 150px;
+    border: 1px solid var(--border);
+    background: rgba(10,23,47,.65);
+    padding: 22px;
+    border-radius: 12px;
+    transition: .25s;
+}
+
+.menu-card:hover {
+    border-color: var(--blue);
+    background: #182d50;
+    transform: translateY(-3px);
+}
+
+.menu-card h3 { font-size: 23px; }
+.menu-card p { font-size: 12px; }
+
+.menu-card button {
+    margin: 15px 0 0;
+    padding: 9px 17px;
+    font-size: 12px;
+}
+
+.panel {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(7,17,36,.65);
+    padding: 28px;
+    margin-top: 25px;
+    text-align: left;
+}
+
+.panel p { margin-bottom: 12px; }
+
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    color: white;
+    background: #0b1730;
+    border: 1px solid #40577e;
+    border-radius: 8px;
+    resize: vertical;
+    margin-top: 10px;
+}
+
+textarea::placeholder,
+input::placeholder { color: #94a5c4; }
+
+.options {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.options button {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    background: #172a4a;
+    border-color: #33496e;
+}
+
+.options button:hover { background: #29436b; }
+
+.feedback {
+    min-height: 28px;
+    color: var(--blue);
+    margin-top: 18px;
+}
+
+.progress {
+    color: var(--blue);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.back-button { margin-top: 28px; }
+
+.memory-card {
+    border-left: 2px solid var(--blue);
+    padding: 5px 0 5px 20px;
+    margin: 23px 0;
+    text-align: left;
+}
+
+.memory-card h3 { font-size: 21px; }
+.memory-card p { font-size: 13px; }
+
+.letter-paper {
+    padding: clamp(22px, 5vw, 42px);
+    border: 1px solid #60799f;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #152748, #0c1932);
+    text-align: left;
+    margin-top: 25px;
+    width: 100%;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .18);
+}
+
+.letter-paper h2 {
+    font-size: clamp(30px, 5vw, 36px);
+    color: var(--blue);
+    margin-bottom: 26px;
+    line-height: 1.35;
+}
+
+.letter-paper p {
+    white-space: pre-line;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: .1px;
+    color: #e9eef8;
+    margin-bottom: 22px;
+}
+
+.signature {
+    font-family: 'Parisienne', cursive;
+    color: var(--blue);
+    font-size: 34px;
+    margin-top: 28px;
+    line-height: 1.5;
+}
+
+audio {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.hidden { display: none !important; }
+
+/* ==================================
+   BIRTHDAY INTRO ANIMATION
+================================== */
+
+#birthdayIntro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 24px;
+    color: white;
+    background:
+        radial-gradient(circle,rgba(143,197,255,.16) 2px,transparent 3px)
+        0 0 / 34px 34px,
+        linear-gradient(145deg,#172b50,#101d3b 60%,#080f20);
+    transition: opacity .8s ease, visibility .8s ease;
+}
+
+#birthdayIntro.intro-exit {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-inner {
+    width: 100%;
+    max-width: 680px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 45px 0 20px;
+    animation: introAppear 1.2s ease both;
+}
+
+@keyframes introAppear {
+    from { opacity: 0; transform: translateY(28px) scale(.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.intro-kicker {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 22px;
+    animation: fadeUp .9s .2s both;
+}
+
+.intro-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px,8vw,72px);
+    line-height: 1.15;
+    color: #fff;
+    animation: fadeUp 1s .4s both;
+}
+
+.intro-heading span {
+    display: block;
+    font-style: italic;
+    color: var(--blue);
+}
+
+.intro-subtitle {
+    margin-top: 14px;
+    font-size: clamp(13px,3vw,17px);
+    animation: fadeUp 1s .6s both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animated birthday bunting */
+
+.bunting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 8px;
+    pointer-events: none;
+}
+
+.flag {
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 43px solid #8fc5ff;
+    transform-origin: top center;
+    animation: flagSwing 2.8s ease-in-out infinite alternate;
+}
+
+.flag:nth-child(2n) {
+    border-top-color: #e9eef8;
+    animation-delay: -.8s;
+}
+
+.flag:nth-child(3n) {
+    border-top-color: #506fa6;
+    animation-delay: -1.4s;
+}
+
+@keyframes flagSwing {
+    from { transform: rotate(-7deg); }
+    to { transform: rotate(7deg); }
+}
+
+/* Floating blue and silver dots */
+
+.confetti {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--blue);
+    opacity: .65;
+    animation: floatDot 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.confetti:nth-of-type(2n) {
+    background: #fff;
+    width: 6px;
+    height: 6px;
+}
+
+.confetti:nth-of-type(3n) {
+    background: #557bb7;
+    width: 12px;
+    height: 12px;
+}
+
+@keyframes floatDot {
+    0%,100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-22px) rotate(180deg); }
+}
+
+/* Birthday cake */
+
+.cake-scene {
+    position: relative;
+    height: 125px;
+    width: 190px;
+    margin: 30px auto 0;
+    animation: cakePop 1s .7s both;
+}
+
+@keyframes cakePop {
+    from { opacity: 0; transform: translateY(35px) scale(.7); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cake {
+    position: absolute;
+    bottom: 12px;
+    left: 25px;
+    width: 140px;
+    height: 53px;
+    border-radius: 12px 12px 17px 17px;
+    background: linear-gradient(180deg,#edf4ff,#b5ccec);
+    box-shadow: 0 10px 24px rgba(0,0,0,.3);
+}
+
+.cake::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.cake::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    border-radius: 50%;
+    background: #d6e5fb;
+}
+
+.cake-plate {
+    position: absolute;
+    bottom: 4px;
+    left: 13px;
+    width: 164px;
+    height: 13px;
+    border-radius: 50%;
+    background: #8ca8d1;
+    box-shadow: 0 7px 18px rgba(0,0,0,.25);
+}
+
+/* FIXED: three silver sparkler candles aligned evenly above cake */
+
+.candle {
+    position: absolute;
+    z-index: 3;
+    bottom: 65px;
+    width: 7px;
+    height: 30px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(
+        135deg,#e9eef8 0 5px,#8fc5ff 5px 10px
+    );
+}
+
+/* Explicit classes prevent the first candle from shifting sideways. */
+.candle-left {
+    left: 57px;
+}
+
+.candle-middle {
+    left: 91px;
+    height: 36px;
+}
+
+.candle-right {
+    left: 125px;
+}
+
+.flame {
+    position: absolute;
+    top: -13px;
+    left: -2px;
+    width: 11px;
+    height: 15px;
+    background: #ffe8a1;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    transform-origin: bottom right;
+    animation: flameFlicker .45s infinite alternate;
+    box-shadow: 0 0 12px rgba(255,211,112,.7);
+}
+
+@keyframes flameFlicker {
+    from { transform: rotate(-45deg) scale(1); }
+    to { transform: rotate(-38deg) scale(.83); }
+}
+
+.intro-enter {
+    margin-top: 22px;
+    padding: 14px 27px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,.5);
+    background: linear-gradient(135deg,#e6f0ff,#9bc9ff);
+    color: #101d3b;
+    font-weight: 600;
+    letter-spacing: .5px;
+    animation: fadeUp 1s 1.6s both;
+}
+
+.intro-enter:hover {
+    background: #fff;
+    box-shadow: 0 0 25px rgba(143,197,255,.35);
+}
+
+.intro-heart {
+    display: inline-block;
+    color: var(--blue);
+    animation: heartBeat 1.4s infinite;
+}
+
+@keyframes heartBeat {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.18); }
+    30% { transform: scale(1); }
+}
+
+.intro-sparkle {
+    position: absolute;
+    color: #d9e8ff;
+    font-size: 20px;
+    animation: sparkle 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0%,100% { opacity: .2; transform: scale(.7) rotate(0); }
+    50% { opacity: 1; transform: scale(1.2) rotate(35deg); }
+}
+
+/* ==================================
+   BALLOON POP BIRTHDAY PAGE
+================================== */
+
+#balloonPage {
+    flex-direction: column;
+    background:
+        radial-gradient(circle at 50% 35%, #203c69, transparent 55%),
+        linear-gradient(145deg, #172b50, #101d3b, #080f20);
+}
+
+.balloon-heading {
+    font-size: clamp(34px, 7vw, 54px);
+    color: white;
+    line-height: 1.2;
+}
+
+.balloon-heading span {
+    display: block;
+    color: var(--blue);
+    font-style: italic;
+}
+
+.balloon-instruction {
+    margin: 16px auto;
+}
+
+.balloon-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 480px;
+    margin: 35px auto 20px;
+}
+
+.pop-balloon {
+    position: relative;
+    width: 85px;
+    height: 105px;
+    padding: 0;
+    margin: 8px;
+    border: 0;
+    border-radius: 50% 50% 45% 45%;
+    background: radial-gradient(
+        circle at 30% 25%,
+        #e7f3ff 0%,
+        #8fc5ff 16%,
+        #3e6fae 52%,
+        #172b50 100%
+    );
+    box-shadow: inset -8px -10px 16px #080f2055,
+                0 0 24px #8fc5ff25;
+    animation: balloonFloat 2.5s ease-in-out infinite alternate;
+    transition: opacity .25s, transform .25s;
+}
+
+.pop-balloon:nth-child(2) { animation-delay: -.8s; }
+.pop-balloon:nth-child(3) { animation-delay: -1.4s; }
+.pop-balloon:nth-child(4) { animation-delay: -.4s; }
+.pop-balloon:nth-child(5) { animation-delay: -1.8s; }
+
+.pop-balloon::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 27px;
+    left: 16px;
+    top: 16px;
+    border-radius: 50%;
+    background: #ffffff55;
+    transform: rotate(35deg);
+}
+
+.pop-balloon::after {
+    content: "";
+    position: absolute;
+    left: 39px;
+    bottom: -8px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid #4776b3;
+}
+
+.pop-balloon:hover {
+    transform: scale(1.1);
+}
+
+.pop-balloon.popped {
+    animation: balloonPop .3s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes balloonFloat {
+    from { transform: translateY(4px) rotate(-4deg); }
+    to { transform: translateY(-12px) rotate(4deg); }
+}
+
+@keyframes balloonPop {
+    0% { transform: scale(1); opacity: 1; }
+    45% { transform: scale(1.35); opacity: .8; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+.balloon-message {
+    min-height: 60px;
+    max-width: 440px;
+    margin: 20px auto;
+    color: white;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(18px, 4vw, 24px);
+    line-height: 1.6;
+}
+
+.birthday-reveal {
+    display: none;
+    padding: 20px 0;
+    animation: fadeUp 1.2s ease both;
+}
+
+.birthday-reveal.visible {
+    display: block;
+}
+
+.birthday-reveal h2 {
+    color: white;
+    font-size: clamp(32px, 7vw, 54px);
+    line-height: 1.35;
+}
+
+.birthday-reveal h2 span {
+    display: block;
+    color: var(--blue);
+    font-style: italic;
+}
+
+.birthday-reveal p {
+    margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+    .balloon-area { gap: 12px; }
+    .pop-balloon {
+        width: 72px;
+        height: 92px;
+    }
+    .pop-balloon::after { left: 32px; }
+}
+
+@media (max-width:600px) {
+    .page { padding: 30px 18px; }
+    .eyebrow { letter-spacing: 2px; font-size: 9px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .menu-card { min-height: 125px; }
+
+    .panel { padding: 20px; }
+
+    .flag {
+        border-left-width: 10px;
+        border-right-width: 10px;
+        border-top-width: 29px;
+    }
+
+    .cake-scene {
+        transform: scale(.85);
+        margin-top: 14px;
+        margin-bottom: 0;
+    }
+
+    .intro-enter { margin-top: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.unsaid-intro {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+</style>
+</head>
+
+<body class="intro-open">
+
+<!-- ==================================
+     BIRTHDAY INTRO
+================================== -->
+
+<div id="birthdayIntro" aria-label="Birthday introduction">
+
+    <div class="bunting" aria-hidden="true">
+        <div class="flag"></div><div class="flag"></div>
+        <div class="flag"></div><div class="flag"></div>
+        <div class="flag"></div><div class="flag"></div>
+        <div class="flag"></div><div class="flag"></div>
+        <div class="flag"></div><div class="flag"></div>
+        <div class="flag"></div><div class="flag"></div>
+    </div>
+
+    <span class="confetti" style="left:8%;top:22%"></span>
+    <span class="confetti" style="left:20%;top:40%;animation-delay:-2s"></span>
+    <span class="confetti" style="left:88%;top:27%;animation-delay:-1s"></span>
+    <span class="confetti" style="left:78%;top:56%;animation-delay:-3s"></span>
+    <span class="confetti" style="left:13%;top:72%;animation-delay:-1.5s"></span>
+    <span class="confetti" style="left:92%;top:76%;animation-delay:-2.5s"></span>
+    <span class="confetti" style="left:47%;top:16%;animation-delay:-.7s"></span>
+    <span class="confetti" style="left:67%;top:18%;animation-delay:-1.8s"></span>
+
+    <span class="intro-sparkle" style="top:24%;left:12%">✦</span>
+    <span class="intro-sparkle" style="top:36%;right:12%;animation-delay:-1s">✧</span>
+    <span class="intro-sparkle" style="bottom:17%;left:18%;animation-delay:-2s">✦</span>
+    <span class="intro-sparkle" style="bottom:20%;right:17%;animation-delay:-.5s">✧</span>
+
+    <div class="intro-inner">
+
+        <div class="intro-kicker">10 November 2002</div>
+
+        <h1 class="intro-heading">
+            <h3>Yay!! No matter how many times life gives me the chance </h3>
+            <h3>to choose again, my heart will find its way back to you.</h3>
+            <h3>Every single time and it will always be youuuu💙</h3>
+        </h1>
+
+
+        <div class="cake-scene" aria-label="Birthday cake with three silver sparkler candles">
+            <div class="cake-plate"></div>
+            <div class="cake"></div>
+
+            <div class="candle candle-left">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle-middle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle-right">
+                <div class="flame"></div>
+            </div>
+        </div>
+
+        <button class="intro-enter" onclick="enterBirthdayWebsite()">
+            Open Surprise 💙 →
+        </button>
+
+        <p style="font-size:13px;margin-top:14px;letter-spacing:1px">
+            I love you my thangameyyyyyyy💙🥹
+        </p>
+
+    </div>
+</div>
+
+<!-- ==================================
+     PAGE 1: HOMEPAGE
+================================== -->
+
+<!-- ==================================
+     BALLOON POP BIRTHDAY PAGE
+================================== -->
+
+<section class="page" id="balloonPage">
+    <div class="content">
+
+        <div class="eyebrow">A Little Something for You♡</div>
+
+        <h1 class="balloon-heading">
+            Pop the Balloons Erumbu
+            
+        </h1>
+
+      
+
+        <div class="balloon-area" id="balloonArea">
+
+            <button class="pop-balloon"
+                data-message="The Lord is your keeper💙"
+                aria-label="Pop balloon one"></button>
+
+            <button class="pop-balloon"
+                data-message="You are fearfully and wonderfully made"
+                aria-label="Pop balloon two"></button>
+
+            <button class="pop-balloon"
+                data-message="Fear not, for I am with thee🙏"
+                aria-label="Pop balloon three"></button>
+
+            <button class="pop-balloon"
+                data-message="Let all that you do be done in love💌"
+                aria-label="Pop balloon four"></button>
+
+         
+
+          
+
+        </div>
+
+        <p class="progress" id="balloonProgress">
+            0 / 4 BALLOONS POPPED
+        </p>
+
+        <p class="balloon-message" id="balloonMessage" aria-live="polite">
+           LYSMMMMMMM🥹
+        </p>
+
+        <div class="birthday-reveal" id="birthdayReveal">
+            <h2>
+                HAPPY BIRTHDAY,
+                <span>MY EVERYDAY PRAYERS💙</span>
+            </h2>
+
+            <p>
+                
+                I've made something little, and a message straight from my heart🫶
+            </p>
+
+            <button class="primary" onclick="showPage('journey')">
+    There's More To This →
+</button>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ==================================
+     PAGE 2: MENU — SIX OPTIONS
+================================== -->
+
+<section class="page" id="journey">
+    <div class="content">
+        <div class="eyebrow">10 November 2002</div>
+
+        <h2>For the Soul I Keep in My Prayers</h2>
+
+        <p>
+            A little piece of my heart lives in every corner of this website.
+        </p>
+
+        <div class="card-grid">
+
+            <div class="menu-card">
+                <h3>01. Your Interceptor</h3>
+                <p>The Man, The Machine & The Memories</p>
+                <button onclick="showPage('bikeGame')">Explore →</button>
+            </div>
+
+            <div class="menu-card">
+                <h3>02. How Well Do You Know Me?</h3>
+                <p>You Know Me… Right?</p>
+                <button onclick="startQuiz()">Play Quiz →</button>
+            </div>
+
+            <div class="menu-card">
+                <h3>03. Memory Lane</h3>
+                <p>Moments That Stayed With Me💙</p>
+                <button onclick="showPage('memories')">Open Memories →</button>
+            </div>
+
+            <div class="menu-card">
+                <h3>04. A Voice for You</h3>
+                <p>If My Heart Could Speak</p>
+                <button onclick="showPage('voice')">Listen →</button>
+            </div>
+
+             <div class="menu-card">
+                <h3>05. Things You Never Told Me</h3>
+                <p>Anything Your Heart Wants to Say</p>
+                <button onclick="showPage('unsaid')">Your Space →</button>
+            </div>
+
+
+            <div class="menu-card">
+                <h3>06. Your Birthday Letter</h3>
+                <p>Something I Wanted You to Read</p>
+                <button onclick="showPage('letter')">Open Letter →</button>
+            </div>
+
+        </div>
+
+        <button class="secondary back-button" onclick="showPage('home')">
+            ← Back Home
+        </button>
+    </div>
+</section>
+
+<!-- ==================================
+     PAGE 3: INTERCEPTOR STORY
+================================== -->
+
+<section class="page" id="bikeGame">
+    <div class="content">
+       
+
+        <h2>Your Interceptor, Your Story</h2>
+
+        
+
+        <div class="panel">
+            <h3>Describe Your 2327</h3>
+
+            
+
+            <textarea id="bikeDescription" rows="5" maxlength="600"
+                placeholder="Int means..."></textarea>
+
+            <p class="progress" id="bikeWords">0 / 600</p>
+
+            <button class="primary" onclick="saveBikeStory()">
+                Save My Story →
+            </button>
+
+            <p class="feedback" id="bikeFeedback" aria-live="polite"></p>
+        </div>
+
+        <button class="secondary" onclick="showPage('journey')">
+            ← Wander Back
+        </button>
+    </div>
+</section>
+
+<!-- ==================================
+     PAGE 4: QUIZ
+================================== -->
+
+<section class="page" id="quiz">
+    <div class="content">
+        <div class="eyebrow">Challenge Two · About Me</div>
+
+        <h2>How Well Do You Know Me?</h2>
+
+        <p>Let's see what stayed with you 💙</p>
+
+        <div class="panel">
+            <p id="quizQuestion"></p>
+            <div class="options" id="quizOptions"></div>
+            <p class="feedback" id="quizFeedback" aria-live="polite"></p>
+            <p class="progress" id="quizProgress"></p>
+        </div>
+
+        <button class="secondary" onclick="showPage('journey')">
+            ← Wander Back
+        </button>
+    </div>
+</section>
+
+<!-- ==================================
+     PAGE 5: MEMORIES
+================================== -->
+
+<section class="page" id="memories">
+    <div class="content">
+        <div class="eyebrow">Pieces of a story I’ll always cherish</div>
+
+        <h2>Memory Lane of Mine</h2>
+
+        <p>
+            Some moments stay with me long after they happen.
+            Here are a few memories I'd like to keep close.
+        </p>
+
+        <div class="panel">
+
+            <div class="memory-card">
+                <h3>The Day I Got Impressedd</h3>
+                <p>
+                    <strong>12 October 2024</strong><br>
+                    A day that became a special part of my story.
+                </p>
+            </div>
+
+            <div class="memory-card">
+                <h3>Meendum Unnai Partha Antha Naal 🫣</h3>
+                <p>
+                    <strong>09 August 2025</strong><br>
+                    Somewhere along the way, you became a part of me
+                    that I could never unlearn!
+                </p>
+                <p>
+                    "Kalaindhu ponayae..kanavugal urasa<br>
+                    Parithu ponayae..ivaladhu manasa" 💃🏻
+                </p>
+            </div>
+
+            <div class="memory-card">
+                <h3>It Takes 11 Hours to Find Your Account 😂</h3>
+                <p>
+                    <strong>10 August 2025</strong><br>
+                    Antha naal Pinto-ku pattam poochi parandha naal! 😂🦋
+                </p>
+            </div>
+
+            <div class="memory-card">
+                <h3>I Can Still Feel Everything All Over Again</h3>
+                <p>
+                    <strong>30 August 2025</strong><br>
+                    That day with you in Ramnad still has a little
+                    piece of my heart!
+                </p>
+            </div>
+
+            <div class="memory-card">
+                <h3>For the Man You're Becoming💙</h3>
+                <p>
+                    If there's one thing I'll always wish for,
+                    it's to see your heart happy and your eyes
+                    full of dreams again!
+                </p>
+            </div>
+
+        </div>
+
+        <button class="secondary" onclick="showPage('journey')">
+            ← Wander Back
+        </button>
+    </div>
+</section>
+
+<!-- ==================================
+     PAGE 6: VOICE MESSAGE
+================================== -->
+
+<section class="page" id="voice">
+    <div class="content">
+        <div class="eyebrow">Press play at your own risk! 🤭</div>
+
+        <h2>Naan maraven en uyireyyyyy 🫶</h2>
+
+        <p>Not just a lyric, but words I wish you could feel!!</p>
+
+        <div class="panel">
+            <h3>Your Voice Message</h3>
+
+            <p>No Escape — You're not getting out of this one! 😂</p>
+
+            <audio id="voicePlayer" controls preload="metadata">
+                <source src="./audio/birthday-message.mp3" type="audio/mpeg">
+                Your browser does not support audio playback.
+            </audio>
+
+            <p class="feedback" id="voiceFeedback"></p>
+        </div>
+
+        <button class="secondary" onclick="showPage('journey')">
+            ← Wander Back
+        </button>
+    </div>
+</section>
+
+<!-- ==================================
+     PAGE 7: BIRTHDAY LETTER
+================================== -->
+
+<section class="page" id="letter">
+    <div class="content">
+        <div class="eyebrow">The last page · From my heart</div>
+
+        <h2>One Last Thing, Erumbu</h2>
+
+        <p>After all, here's something I wanted you to read.</p>
+
+        <button class="primary" id="openLetterButton" onclick="revealLetter()">
+            Open Your Letter 💙
+        </button>
+
+        <div class="letter-paper hidden" id="letterPaper">
+            <h2>My Dear Erumbu,</h2>
+
+            <p>HAPPY BIRTHDAY TWIN CYLINDER BROOO</p>
+
+            <p>
+                I wish you could see yourself through my eyes,
+                just to understand how special you are to me.
+            </p>
+
+            <p>
+                I love you for who you are, not for who you were
+                or what you've been through.
+            </p>
+
+            <p>
+                You never have to hide your past or pretend to be
+                someone else with me.
+            </p>
+
+            <p>
+                I want you to feel loved, understood, and safe
+                being yourself.
+            </p>
+
+            <p>
+                I may not be able to take away all your worries,
+                but I'll always want to be someone who brings
+                peace to your heart.
+            </p>
+
+            <p>
+                I want to care for you, stand beside you through
+                your difficult days, celebrate your happiness,
+                and remind you that you deserve love just as you are.
+            </p>
+
+            <p>
+                I love you, and my heart will always wish the very
+                best for youuuuuuu 🫂
+            </p>
+
+            <p>
+                May God always protect you, guide you, and give you
+                every happiness your heart deserves.
+            </p>
+
+            <p>
+                And may you always remember that somewhere,
+                someone is praying for you with a love that words
+                can never fully explain! 🤌🧿
+            </p>
+
+            <p>
+                And I still believe that my SNOW will never let me down.
+                She knows the deepest desires of my heart, the prayers
+                I whisper through my tears, and the hope I still carry
+                within me 🩵
+            </p>
+
+            <div class="signature">With love, Pinto</div>
+        </div>
+
+        <button class="secondary" onclick="showPage('journey')">
+            ← Wander Back
+        </button>
+    </div>
+</section>
+
+<!-- ==================================
+     PAGE 8: THINGS YOU NEVER TOLD ME
+================================== -->
+
+<section class="page" id="unsaid">
+    <div class="content">
+        <div class="eyebrow">A little space just for you</div>
+
+        <h2>Things You Never Told Me</h2>
+
+        <p>
+            
+           <h3>Maybe it's a thought you've kept to yourself, a memory you
+            want me to know, something you've wanted me to understand,
+            or simply something that's been on your mind.If there's anything you've ever wanted to share with me,
+            you can write it here in your own words.</h3>
+
+            
+        </p>
+
+        <div class="panel">
+            <h3>Unsaid, But Understood</h3>
+
+            
+
+            <textarea
+                id="unsaidMessage"
+                rows="7"
+                maxlength="5000"
+                placeholder="If there's something you've wanted to tell me..."></textarea>
+
+            <p class="progress" id="unsaidCount">0 / 5000</p>
+
+            <button class="primary" onclick="saveUnsaidMessage()">
+                Save Words💙
+            </button>
+
+            <p class="feedback" id="unsaidFeedback" aria-live="polite"></p>
+
+            
+        </div>
+
+        <button class="secondary" onclick="showPage('journey')">
+            ← Wander Back
+        </button>
+    </div>
+</section>
+<!-- REMO BIRTHDAY BACKGROUND MUSIC -->
+<audio id="birthdayMusic" loop preload="auto">
+    <source src="./audio/remo-birthday-bgm.mp3" type="audio/mpeg">
+</audio>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    /* EMAILJS CONFIGURATION */
+
+emailjs.init({
+    publicKey: "64GLoo9WSs5TWRxVo"
+});
+
+const EMAIL_SERVICE_ID = "service_vhtp6wx";
+const EMAIL_TEMPLATE_ID = "template_o6vtbqn";
+async function sendBirthdayEmail(subject, templateParams) {
+    if (typeof emailjs === "undefined") {
+        throw new Error("EmailJS library did not load.");
+    }
+
+    return await emailjs.send(
+        "service_vhtp6wx",
+        "template_o6vtbqn",
+        {
+            subject: subject,
+            ...templateParams
+        }
+    );
+}
+
+
+
+/* ==================================
+   BIRTHDAY INTRO
+================================== */
+
+
+function enterBirthdayWebsite() {
+    const intro = document.getElementById('birthdayIntro');
+    const birthdayMusic = document.getElementById('birthdayMusic');
+
+    if (!intro) return;
+
+    if (birthdayMusic) {
+        birthdayMusic.volume = 0.6;
+
+        birthdayMusic.play().catch(error => {
+            console.log('Background music could not start:', error);
+        });
+    }
+
+    intro.classList.add('intro-exit');
+    document.body.classList.remove('intro-open');
+
+    setTimeout(() => {
+        intro.style.display = 'none';
+        showPage('balloonPage');
+    }, 800);
+}
+
+/* ==================================
+   BACKGROUND MUSIC + VOICE MESSAGE
+================================== */
+
+const birthdayMusic = document.getElementById('birthdayMusic');
+const voicePlayer = document.getElementById('voicePlayer');
+
+let resumeBirthdayMusic = false;
+
+// Pause background music when the voice message starts
+if (voicePlayer && birthdayMusic) {
+    voicePlayer.addEventListener('play', () => {
+        resumeBirthdayMusic = !birthdayMusic.paused;
+
+        if (resumeBirthdayMusic) {
+            birthdayMusic.pause();
+        }
+    });
+
+    // Resume background music when the voice message ends
+    voicePlayer.addEventListener('ended', () => {
+        if (resumeBirthdayMusic) {
+            birthdayMusic.play().catch(error => {
+                console.log('Background music resume error:', error);
+            });
+
+            resumeBirthdayMusic = false;
+        }
+    });
+
+    // Also resume if he pauses the voice message manually
+    voicePlayer.addEventListener('pause', () => {
+        if (resumeBirthdayMusic && !voicePlayer.ended) {
+            birthdayMusic.play().catch(error => {
+                console.log('Background music resume error:', error);
+            });
+
+            resumeBirthdayMusic = false;
+        }
+    });
+}
+
+/* ==================================
+   BALLOON POP INTERACTION
+================================== */
+
+const birthdayBalloons = document.querySelectorAll('.pop-balloon');
+let poppedBalloons = 0;
+
+birthdayBalloons.forEach(balloon => {
+    balloon.addEventListener('click', () => {
+        if (balloon.classList.contains('popped')) return;
+
+        balloon.classList.add('popped');
+        balloon.disabled = true;
+        poppedBalloons++;
+
+        document.getElementById('balloonMessage').textContent =
+            balloon.dataset.message;
+
+        document.getElementById('balloonProgress').textContent =
+            poppedBalloons + ' / ' + birthdayBalloons.length +
+            ' BALLOONS POPPED';
+
+        if (poppedBalloons === birthdayBalloons.length) {
+            document.getElementById('balloonMessage').textContent =
+                'Ready, my Erumbu? Your day starts here!';
+
+            setTimeout(() => {
+                document.getElementById('birthdayReveal')
+                    .classList.add('visible');
+
+                document.getElementById('birthdayReveal')
+                    .scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+            }, 500);
+        }
+    });
+});
+
+/* ==================================
+   GENERAL PAGE NAVIGATION
+================================== */
+
+function showPage(id) {
+    const selectedPage = document.getElementById(id);
+
+    if (!selectedPage) return;
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    selectedPage.classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+/* ==================================
+   INTERCEPTOR STORY
+================================== */
+
+const bikeInput = document.getElementById('bikeDescription');
+
+bikeInput.addEventListener('input', () => {
+    document.getElementById('bikeWords').textContent =
+        bikeInput.value.length + ' / 600';
+});
+
+async function saveBikeStory() {
+    const story = bikeInput.value.trim();
+    const feedback = document.getElementById('bikeFeedback');
+
+    if (!story) {
+        feedback.textContent = 'Tell me about your Interceptor first. 💙';
+        return;
+    }
+
+    feedback.textContent = 'Sending your story to Pinto... 💙';
+
+    try {
+      await sendBirthdayEmail(
+    'Erumbu - Interceptor Story',
+    {
+        interceptor_story: story
+    }
+);
+        feedback.textContent =
+            'Your Interceptor story reached Pinto! 💙';
+
+    } catch (error) {
+        console.error('EmailJS error:', error);
+        feedback.textContent =
+            'Email failed to send. Please try again.';
+    }
+}
+
+/* Restore the saved bike story */
+
+try {
+    const savedBikeStory = localStorage.getItem('erumbu_bikeDescription');
+
+    if (savedBikeStory !== null) {
+        bikeInput.value = savedBikeStory;
+        document.getElementById('bikeWords').textContent =
+            savedBikeStory.length + ' / 600';
+    }
+} catch (error) {
+    // The page remains usable if browser storage is unavailable.
+}
+
+/* ==================================
+   THINGS YOU NEVER TOLD ME
+   Save in the same browser
+================================== */
+
+const unsaidInput = document.getElementById('unsaidMessage');
+
+function updateUnsaidCount() {
+    document.getElementById('unsaidCount').textContent =
+        unsaidInput.value.length + ' / 5000';
+}
+
+unsaidInput.addEventListener('input', updateUnsaidCount);
+async function saveUnsaidMessage() {
+    const message = unsaidInput.value.trim();
+    const feedback = document.getElementById('unsaidFeedback');
+
+    if (!message) {
+        feedback.textContent =
+            'Write something you want to share first. 💙';
+        return;
+    }
+
+    feedback.textContent = 'Sending your words to Pinto... 💙';
+
+    try {
+        await sendBirthdayEmail(
+    'Erumbu - Things I Never Said',
+    {
+        never_said: message
+    }
+);
+
+        feedback.textContent =
+            'Your words have been sent to Pinto. 💙';
+
+    } catch (error) {
+        console.error('Unsaid message email error:', error);
+        feedback.textContent =
+            'Email failed to send. Please try again.';
+    }
+}
+
+/* Restore previously saved words */
+
+try {
+    const savedUnsaidMessage = localStorage.getItem('erumbu_unsaidMessage');
+
+    if (savedUnsaidMessage !== null) {
+        unsaidInput.value = savedUnsaidMessage;
+        updateUnsaidCount();
+    }
+} catch (error) {
+    // The page remains usable if browser storage is unavailable.
+}
+
+/* ==================================
+   HOW WELL DO YOU KNOW ME?
+   Original 8 quiz questions preserved
+================================== */
+
+const quizQuestions = [
+    {
+        question: "Which month is special to me?",
+        answers: [
+            "January",
+            "April",
+            "August",
+            "December"
+        ],
+        correct: 2
+    },
+    {
+        question: "If I could ask you for just one thing without hesitation, what do you think it would be?",
+        answers: [
+            "Give me reassurance when I overthink",
+            "Be honest with me, even when it's difficult",
+            "Notice the little things that matter to me",
+            "Understand me without judging me"
+        ],
+        correct: 3
+    },
+    {
+        question: "What do you think makes me feel loved the most?",
+        answers: [
+            "Small efforts and thoughtful gestures",
+            "Spending quality time together",
+            "Honest words and reassurance",
+            "Consistency and actions"
+        ],
+        correct: 1
+    },
+    {
+        question: "Which date is a special memory for me?",
+        answers: [
+            "12 October 2024",
+            "09 August 2025",
+            "10 November 2002",
+            "30 August 2025"
+        ],
+        correct: 0
+    },
+    {
+        question: "If I had a difficult day, which little thing do you think could make it better?",
+        answers: [
+            "Someone listening to me",
+            "A comforting message",
+            "A peaceful moment with God",
+            "A little surprise from someone special"
+        ],
+        correct: 1
+    },
+    {
+        question: "What do you think is one thing I'm most proud of in my life?",
+        answers: [
+            "The identity I'm building through my creativity",
+            "The people and memories that shaped me",
+            "The strength I've found through difficult times",
+            "The person I'm becoming"
+        ],
+        correct: 2
+    },
+    {
+        question: "If you could give me one thing that money cannot buy, what do you think I'd value the most?",
+        answers: [
+            "A memory that stays with me forever",
+            "Peace of mind and a calm heart",
+            "The certainty that I can always be myself",
+            "The feeling of being genuinely loved"
+        ],
+        correct: 3
+    },
+    {
+        question: "What kind of surprise do you think would make me emotional?",
+        answers: [
+            "Something connected to a special memory",
+            "A handwritten letter",
+            "An unexpected effort from someone I love",
+            "A thoughtful gift made just for me"
+        ],
+        correct: 2
+    }
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+let quizResponses = [];
+
+function startQuiz() {
+    quizIndex = 0;
+    quizScore = 0;
+    quizAnswered = false;
+    quizResponses = [];
+
+    showPage('quiz');
+    renderQuiz();
+}
+
+function renderQuiz() {
+    const q = quizQuestions[quizIndex];
+
+    document.getElementById('quizQuestion').textContent =
+        (quizIndex + 1) + '. ' + q.question;
+
+    document.getElementById('quizProgress').textContent =
+        'QUESTION ' + (quizIndex + 1) +
+        ' OF ' + quizQuestions.length;
+
+    document.getElementById('quizFeedback').textContent = '';
+
+    const box = document.getElementById('quizOptions');
+    box.innerHTML = '';
+
+    q.answers.forEach((answer, index) => {
+        const btn = document.createElement('button');
+
+        btn.type = 'button';
+        btn.textContent = answer;
+        btn.onclick = () => answerQuiz(index);
+
+        box.appendChild(btn);
+    });
+
+    quizAnswered = false;
+}
+
+function answerQuiz(index) {
+    if (quizAnswered) return;
+
+    quizAnswered = true;
+
+    const q = quizQuestions[quizIndex];
+    const feedback = document.getElementById('quizFeedback');
+
+    const isCorrect = index === q.correct;
+
+    if (isCorrect) {
+        quizScore++;
+        feedback.textContent =
+            'Correct! 💙 You remembered that little detail!';
+    } else {
+        feedback.textContent =
+            'Not this one! 💙 The correct answer is: ' +
+            q.answers[q.correct];
+    }
+
+    // Save this question and his answer for the email
+    if (!Array.isArray(quizResponses)) {
+        quizResponses = [];
+    }
+
+    quizResponses.push({
+        question: q.question,
+        answer: q.answers[index],
+        correctAnswer: q.answers[q.correct],
+        result: isCorrect ? 'Correct' : 'Incorrect'
+    });
+
+    const box = document.getElementById('quizOptions');
+
+    box.querySelectorAll('button').forEach(button => {
+        button.disabled = true;
+        button.style.opacity = '.7';
+    });
+
+    const next = document.createElement('button');
+
+    next.type = 'button';
+    next.className = 'primary';
+
+    next.textContent =
+        quizIndex < quizQuestions.length - 1
+            ? 'Next Question →'
+            : 'See My Result →';
+
+    next.onclick = () => {
+        quizIndex++;
+
+        if (quizIndex < quizQuestions.length) {
+            renderQuiz();
+        } else {
+            showQuizResult();
+        }
+    };
+
+    box.appendChild(next);
+}
+
+
+async function showQuizResult() {
+    document.getElementById('quizQuestion').textContent =
+        'A wrapppp! 💙';
+
+    const box = document.getElementById('quizOptions');
+    box.innerHTML = '';
+
+    const result = document.createElement('p');
+    result.textContent =
+        'You got ' + quizScore + ' out of ' +
+        quizQuestions.length + ' correct.';
+
+    box.appendChild(result);
+
+    const feedback = document.getElementById('quizFeedback');
+
+    feedback.textContent = 'Sending your answers to Pinto... 💙';
+
+    document.getElementById('quizProgress').textContent =
+        'ALL DONE!';
+
+    // Prepare all quiz answers for email
+    const answerDetails = quizResponses.map((item, i) => {
+        return (
+            (i + 1) + '. ' + item.question + '\n' +
+            'His answer: ' + item.answer + '\n' +
+            'Correct answer: ' + item.correctAnswer + '\n' +
+            'Result: ' + item.result
+        );
+    }).join('\n\n');
+
+    console.log('QUIZ ANSWERS:', quizResponses);
+    console.log('EMAIL CONTENT:', answerDetails);
+
+    try {
+        const emailResult = await sendBirthdayEmail(
+            'Erumbu - Birthday Quiz Results',
+            {
+                quiz_results:
+                    'QUIZ RESULTS\n\n' +
+                    'Score: ' + quizScore + '/' +
+                    quizQuestions.length + '\n\n' +
+                    answerDetails
+            }
+        );
+
+        console.log('QUIZ EMAIL SENT:', emailResult);
+
+        feedback.textContent =
+            'Your quiz answers reached Pinto! 💙';
+
+    } catch (error) {
+        console.error('Quiz email error:', error);
+
+        feedback.textContent =
+            'Quiz email failed. Please try again.';
+
+        console.error('Email error details:', error?.text || error?.message || error);
+    }
+}
+
+   
+/* ==================================
+   FINAL LETTER
+================================== */
+
+
+function revealLetter() {
+    const letter = document.getElementById('letterPaper');
+    const openButton = document.getElementById('openLetterButton');
+
+    letter.classList.remove('hidden');
+    openButton.classList.add('hidden');
+
+    setTimeout(() => {
+        letter.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }, 100);
+}
+
+
+</script>
+</body>
+
+
